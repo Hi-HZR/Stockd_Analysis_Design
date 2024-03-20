@@ -28,12 +28,7 @@ urlpatterns = [
     path('search/', views.search),
     path('emotion/chart', emotion.emotion_chart),
     path('index', test.index),
-
-    # show_function
     path('function/', show_function.show_function),
-    # show_chart
     path('chart/', show_chart.show_chart),
-
-    # file_upload
     path('file/upload', file_upload.file_upload),
 ]
