@@ -1,0 +1,21 @@
+{%extends "layout.html"%}
+
+{%block css%}
+    <title>增加信息</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+{%endblock%}
+
+{%block content%}
+<div class="fs">
+    <form method="post" style="padding-left:10px;padding-right:10px;padding-top:10px;">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="mb-3">
+            <label >{{ field.label }}</label>
+            {{ field }}
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-success" style="margin-top:10px">提交</button>
+    </form>
+</div>
+{%endblock%}
