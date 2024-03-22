@@ -13,6 +13,6 @@ def emotion_chart(request):
         negative_prob = result[1]
         print(positive_prob, negative_prob)
     # return HttpResponse("success")
-    #     return render(request, 'emotion_chart.html', {'positive_prob': positive_prob, 'negative_prob': negative_prob})
+    #     return render(request, 'emotion.html', {'positive_prob': positive_prob, 'negative_prob': negative_prob})
     # print("积极概率：", positive_prob, "消极概率：", negative_prob)
     # print(positive_prob, negative_prob)

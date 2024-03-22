@@ -1,6 +1,4 @@
-import requests
-import json
-from django.http import HttpResponse
+import requests,json
 from django.shortcuts import render
 from app_1.models import UserInfo
 
@@ -67,5 +65,5 @@ def emotion_chart(request):
         print("No valid sentiment scores found for comments.")
 
     # Rest of your function logic (e.g., rendering template)
-    return render(request, 'emotion_chart.html',
+    return render(request, 'emotion.html',
                   {'average_positive_prob': average_positive_prob, 'average_negative_prob': average_negative_prob})

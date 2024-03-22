@@ -56,8 +56,6 @@ def info(request):
     return render(request, "info.html", context)
 
 
-
-
 def delete(request):
     # 删除数据
     uid = request.GET.get("nid")
@@ -112,8 +110,6 @@ def search(request):
         msg = UserInfo.objects.filter(
             Q(name__icontains=search_info) | Q(uid__icontains=search_info) | Q(uid__icontains=search_info))
         return render(request, 'result.html', {'msg': msg})
-
-
 
 
 def function(request):
