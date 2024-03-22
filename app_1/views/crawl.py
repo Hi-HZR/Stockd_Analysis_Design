@@ -1,12 +1,8 @@
 # 爬取雪球用户的评论并且把数据存储到MYSQL的app_1_userinfo数据表
 import re
 import time
-
-import pandas
 import requests
-from django.shortcuts import redirect
-from openpyxl.reader.excel import load_workbook
-from app_1.models import UserInfo
+
 
 
 def crawl_file(request):
@@ -26,7 +22,7 @@ def crawl_file(request):
     obj = re.compile(r'<[^>]+>', re.S)
 
     for page in range(1, 11):
-        if page % 10 == 0:
+        if page % 20 == 0:
             time.sleep(5)
         print("正在爬取第", page, "页的内容")
         # 请求网站
