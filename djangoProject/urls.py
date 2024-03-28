@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.urls import path
 from app_1.views import views, show_chart, test, crawl, upload, emotion_chart, emotion_sdk
-
+from django.contrib import admin
 urlpatterns = [
     # views
+    path('admin/', admin.site.urls),
     path('login/', views.login),
     path('info/', views.info),
     path('delete/', views.delete),
