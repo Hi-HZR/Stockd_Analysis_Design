@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from app_1.views import views, show_chart, test, crawl, upload, emotion_chart, emotion_sdk
+from app_1.views import views, show_chart, test, crawl, upload, emotion_chart, emotion_sdk, lstm, crawl_price
 from django.contrib import admin
 urlpatterns = [
     # views
@@ -33,4 +33,6 @@ urlpatterns = [
     # path('emotion/', emotion.emotion_text),
     path('emotion/chart', emotion_chart.emotion_chart),
     path('emotion/sdk', emotion_sdk.emotion_sdk),
+    path('lstm', lstm.lstm),
+    path('crawl/price', crawl_price.crawl_price),
 ]
