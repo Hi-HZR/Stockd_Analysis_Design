@@ -22,41 +22,47 @@
     var option;
 
     option = {
-      title: {
-        text: '情绪分别',
-
-        left: 'center'
-      },
-      tooltip: {
-        trigger: 'item'
-      },
-      legend: {
-        orient: 'vertical',
-        left: 'left'
-      },
-      series: [
-        {
-          name: 'Access From',
-          type: 'pie',
-          radius: '50%',
-          data: [
-            { value: {{average_positive_prob}}, name: '积极情绪',itemStyle: {color:'#FF8C00'},},
-            { value: {{average_negative_prob}}, name: '消极情绪' ,itemStyle: {color:'#8B8989'},},
-          ],
-          emphasis: {
-            itemStyle: {
-              shadowBlur: 10,
-              shadowOffsetX: 0,
-              shadowColor: 'rgba(0, 0, 0, 0)'
+        toolbox: {
+            show: true,
+            feature: {
+                saveAsImage: {
+                    show: true,
+                    pixelRatio : 1
+                }
             }
-          }
-        }
-      ]
+        },
+        title: {
+            text: '情绪分析',
+
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'item'
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left'
+        },
+        series: [
+            {
+                name: 'Access From',
+                type: 'pie',
+                radius: '50%',
+                data: [
+                    {value: {{average_positive_prob}}, name: '积极', itemStyle: {color: '#FF8C00'},},
+                    {value: {{average_negative_prob}}, name: '消极', itemStyle: {color: '#8B8989'},},
+                ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0)'
+                    }
+                }
+            }
+        ]
     };
 
     option && myChart.setOption(option);
-
-
-
-        </script>
+    </script>
 {%endblock%}

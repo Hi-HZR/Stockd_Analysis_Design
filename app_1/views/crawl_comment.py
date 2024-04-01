@@ -3,7 +3,7 @@ import re
 import time
 import requests
 
-
+# 不在使用
 
 def crawl_file(request):
     last = None
@@ -17,11 +17,11 @@ def crawl_file(request):
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 '
                       'Safari/537.36'
     }
-    content_list = []
+    content_list_comment = []
     # 正则表达式
     obj = re.compile(r'<[^>]+>', re.S)
 
-    for page in range(1, 11):
+    for page in range(1, 2):
         if page % 20 == 0:
             time.sleep(5)
         print("正在爬取第", page, "页的内容")
@@ -48,13 +48,13 @@ def crawl_file(request):
                     'name': item['user']['screen_name'],
                     'comment': obj.sub('', item['text']),
                 }
-                content_list.append(dit)
+                content_list_comment.append(dit)
                 last = item['id']
         except UnicodeEncodeError as e:
             # 如果出现UnicodeEncodeError，则不添加到content_list
             print(f"Error encoding string: {e}")
 
     # 获取的用户数据
-    print('success')
+    print('成功获取用户评论')
     # return redirect('http://127.0.0.1:8000/info')
-    return content_list
+    return content_list_comment

@@ -1,11 +1,11 @@
 {%extends "layout.html"%}
 {% load static %}
 {%block css%}
-    <title>网页</title>
+    <title>用户</title>
     <link rel="stylesheet" href="{% static 'fonts/OPPOSans-Regular.ttf' %}">
     <link rel="stylesheet" href="{% static 'fonts/OPPOSans-Medium.ttf' %}">
     <link rel="stylesheet" href="{% static 'fonts/OPPOSans-Bold.ttf' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
 {% endblock %}
 {%block content%}
 <div class="main">
@@ -37,33 +37,6 @@
         </div>
         <div class="function">
 
-            <div class="left" style="width: 10rem">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                     class="bi bi-cloud-download" viewBox="0 0 16 16">
-                    <path d="M4.406 1.342A5.53 5.53 0 0 1 8 0c2.69 0 4.923 2 5.166 4.579C14.758 4.804 16 6.137 16 7.773 16 9.569 14.502 11 12.687 11H10a.5.5 0 0 1 0-1h2.688C13.979 10 15 8.988 15 7.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 2.825 10.328 1 8 1a4.53 4.53 0 0 0-2.941 1.1c-.757.652-1.153 1.438-1.153 2.055v.448l-.445.049C2.064 4.805 1 5.952 1 7.318 1 8.785 2.23 10 3.781 10H6a.5.5 0 0 1 0 1H3.781C1.708 11 0 9.366 0 7.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383z"/>
-                    <path d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z"/>
-                </svg>
-                <div class="card-body">
-                    <p class="card-text fs-6 text-secondary" style="width: 100px;font-family:'OPPOSans',sans-serif ">
-                        获取用户评论上传数据库</p>
-                    <a href="http://127.0.0.1:8000/upload" class="btn btn-info">获取数据</a>
-                </div>
-            </div>
-
-
-
-            <div class="left" style="width: 10rem">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                     class="bi bi-cloud-download" viewBox="0 0 16 16">
-                    <path d="M4.406 1.342A5.53 5.53 0 0 1 8 0c2.69 0 4.923 2 5.166 4.579C14.758 4.804 16 6.137 16 7.773 16 9.569 14.502 11 12.687 11H10a.5.5 0 0 1 0-1h2.688C13.979 10 15 8.988 15 7.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 2.825 10.328 1 8 1a4.53 4.53 0 0 0-2.941 1.1c-.757.652-1.153 1.438-1.153 2.055v.448l-.445.049C2.064 4.805 1 5.952 1 7.318 1 8.785 2.23 10 3.781 10H6a.5.5 0 0 1 0 1H3.781C1.708 11 0 9.366 0 7.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383z"/>
-                    <path d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z"/>
-                </svg>
-                <div class="card-body">
-                    <p class="card-text fs-6 text-secondary" style="width: 100px;font-family:'OPPOSans',sans-serif ">
-                        获取股票价格数据</p>
-                    <a href="http://127.0.0.1:8000/crawl/price" class="btn btn-info">获取价格数据</a>
-                </div>
-            </div>
 
 
             <div class="left" style="width: 10rem;">
@@ -74,7 +47,10 @@
                 </svg>
                 <div class="card-body">
                     <p class="card-text fs-6 text-secondary" style="width: 100px;font-family:'OPPOSans',sans-serif ">
-                        对于用户评论进行情绪分析</p>
+                        用户评论
+                        <br>
+                        进行情绪分析
+                    </p>
                     <a href="http://127.0.0.1:8000/emotion/chart" class="btn btn-primary">情绪分析</a>
                 </div>
             </div>
@@ -87,8 +63,38 @@
                     <p class="card-text fs-6 text-secondary" style="width: 100px;font-family:'OPPOSans',sans-serif ">
                         LSTM 来进行股价分析</p>
                     <a href="http://localhost:8000/lstm">
-                        <input type="submit" value="LSTM分析" class="btn btn-info">
+                        <input type="submit" value="LSTM分析" class="btn btn-primary">
                     </a>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="left" style="width: 10rem">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chat-right-text" viewBox="0 0 16 16">
+                  <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"/>
+                  <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+                <div class="card-body">
+                    <p class="card-text fs-6 text-secondary" style="width: 100px;font-family:'OPPOSans',sans-serif ">
+                        通过相关数据总结预测</p>
+                    <a href="http://localhost:8000/summary" class="btn btn-primary">总结预测</a>
+                </div>
+            </div>
+
+
+            <div class="left" style="width: 10rem;margin-top:33px">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                     class="bi bi-cloud-download" viewBox="0 0 16 16">
+                    <path d="M4.406 1.342A5.53 5.53 0 0 1 8 0c2.69 0 4.923 2 5.166 4.579C14.758 4.804 16 6.137 16 7.773 16 9.569 14.502 11 12.687 11H10a.5.5 0 0 1 0-1h2.688C13.979 10 15 8.988 15 7.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 2.825 10.328 1 8 1a4.53 4.53 0 0 0-2.941 1.1c-.757.652-1.153 1.438-1.153 2.055v.448l-.445.049C2.064 4.805 1 5.952 1 7.318 1 8.785 2.23 10 3.781 10H6a.5.5 0 0 1 0 1H3.781C1.708 11 0 9.366 0 7.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383z"/>
+                    <path d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z"/>
+                </svg>
+                <div class="card-body">
+                    <p class="card-text fs-6 text-secondary" style="width: 100px;font-family:'OPPOSans',sans-serif ">
+                        获取用户评论和股票价格</p>
+                    <a href="http://127.0.0.1:8000/upload" class="btn btn-info">获取数据</a>
                 </div>
             </div>
 
@@ -100,9 +106,8 @@
                     <path d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"></path>
                 </svg>
                 <div class="card-body">
-                    <h5 class="card-title">手动增加</h5>
-                    <p class="card-text fs-6 text-secondary">Card text</p>
-                    <a href="http://127.0.0.1:8000/add/" class="btn btn-success">增加数据</a>
+                    <p class="card-text fs-6 text-secondary" style="width: 100px;font-family:'OPPOSans',sans-serif ">手动增加用户评论数据</p>
+                    <a href="http://127.0.0.1:8000/add/" class="btn btn-warning">增加数据</a>
                 </div>
             </div>
 
@@ -115,25 +120,11 @@
                           d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-.646-4.854a.5.5 0 0 0-.708.708l.647.646-.647.646a.5.5 0 0 0 .708.708l.646-.647.646.647a.5.5 0 0 0 .708-.708l-.647-.646.647-.646a.5.5 0 0 0-.708-.708l-.646.647-.646-.647Z"/>
                 </svg>
                 <div class="card-body">
-                    <h5 class="card-title ">手动删除</h5>
-                    <p class="card-text fs-6 text-secondary">Card text</p>
+                    <p class="card-text fs-6 text-secondary" style="width: 100px;font-family:'OPPOSans',sans-serif ">手动删除用户评论数据</p>
                     <a href="http://127.0.0.1:8000/info/" class="btn btn-danger">删除数据</a>
                 </div>
             </div>
 
-            <div class="left" style="width: 10rem;margin-top:33px">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                     class="bi bi-person-dash" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                          d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM11 12a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3Zm0-7a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
-                    <path d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
-                </svg>
-                <div class="card-body">
-                    <h5 class="card-title ">手动修改</h5>
-                    <p class="card-text fs-6 text-secondary">Card text</p>
-                    <a href="http://127.0.0.1:8000/info/" class="btn btn-warning">修改数据</a>
-                </div>
-            </div>
         </div>
         <div class="clear:both"></div>
     </div>
@@ -186,13 +177,13 @@
                         borderRadius: 5
                     },
                     data: [
-                        {value: 30, name: '情绪分析',itemStyle: {color:'#4876FF'}},
-                        {value: 28, name: '获取数据',itemStyle: {color:'#00BFFF'}},
-                        {value: 26, name: '查看数据',itemStyle: {color:'#FFAEB9'}},
-                        {value: 24, name: '手动增加数据',itemStyle: {color: '#228B22'}},
-                        {value: 22, name: '手动删除数据',itemStyle: {color: '#EE2C2C'}},
-                        {value: 20, name: '手动修改数据',itemStyle: {color: '#FFA500'}},
-                        {value: 18, name: '手动查找数据',itemStyle: {color: '#9370DB'}},
+                        {value: 30, name: '情绪分析',itemStyle: {color:'#696969'}},
+                        {value: 28, name: 'LSTM分析',itemStyle: {color:'#708090'}},
+                        {value: 26, name: '总结预测',itemStyle: {color:'#D3D3D3'}},
+                        {value: 24, name: '查找数据',itemStyle: {color: '#228B22'}},
+                        {value: 22, name: '增加数据',itemStyle: {color: '#00BFFF'}},
+                        {value: 20, name: '手动增加数据',itemStyle: {color: '#FFA500'}},
+                        {value: 18, name: '手动删除数据',itemStyle: {color: '#EE2C2C'}},
                     ]
                 }
             ]

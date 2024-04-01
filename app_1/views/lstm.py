@@ -1,8 +1,4 @@
-import base64
-from io import BytesIO
-
 import matplotlib.pyplot as plt
-from django.http import HttpResponse
 from django.shortcuts import render
 from matplotlib.font_manager import FontProperties
 import pandas as pd
@@ -10,10 +6,12 @@ import torch
 from torch import nn
 import mpld3
 
+from app_1.views.trans import tran
 
-def lstm(request):
+
+def definite_lstm(request):
     w = FontProperties(fname='D:/PythonProject/djangoProject/app_1/static/fonts/OPPOSans-Medium.ttf')
-
+    w.set_size(16)
     # Returns a DataFrame
     data = pd.read_excel("D:/PythonProject/djangoProject/price.xlsx")
     print('data.shape:', data.shape)
@@ -31,7 +29,7 @@ def lstm(request):
     train_size = int(len(timeseries) * 0.6)
     test_size = len(timeseries) - train_size
     # 通过索引把训练集，测试集给索引出来
-    train, test = timeseries[:train_size], timeseries[:test_size]
+    train, test = timeseries[:train_size], timeseries[train_size:]
     print('train.shape:', train.shape)
     print('test.shape:', test.shape)
 
@@ -66,13 +64,13 @@ def lstm(request):
 
     # 超参数的设置
     input_size = 1
-    hidden_size = 64
-    num_layers = 16
+    hidden_size = 16
+    num_layers = 2
     output_size = 1
     # 扩大学习率
-    learning_rate = 0.01
+    learning_rate = 0.1
     # 增加总迭代次数
-    num_epochs = 2000
+    num_epochs = 200
 
     # 实例化模型
     model = LSTMModel(input_size, hidden_size, num_layers, output_size)
@@ -85,7 +83,7 @@ def lstm(request):
     for epoch in range(num_epochs):
         outputs = model(train_tensor)
         optimizer.zero_grad()
-        loss = criterion(outputs, train_tensor[:, :, :])
+        loss = criterion(outputs[:, 1:, :], train_tensor[:, 1:, :])  # 修正损失函数计算
         loss.backward()
         optimizer.step()
 
@@ -96,13 +94,6 @@ def lstm(request):
 
     model.eval()
     test_outputs = model(test_tensor).detach().numpy()
-
-    print('------训练集-------')
-    print(train)
-    print('训练集平均值', train.mean())
-    print('------测试集-------')
-    print(test)
-    print('测试集平均值', test.mean())
 
     fig_1 = plt.figure(dpi=100, figsize=(10, 4))
     plt.plot(train, linewidth=5, color='#0FC513')
@@ -118,10 +109,19 @@ def lstm(request):
     axes_2.set_xlabel('次数', fontproperties=w)
     axes_2.set_ylabel('数值', fontproperties=w)
     axes_2.set_title('测试图', fontproperties=w)
-    fig = plt.figure(dpi=100, figsize=(10, 4))
     mpld3.save_html(fig_2, 'png_test.html')
-    # mpld3.show()
-    # mpld3.fig_to_html(fig, 'lstm.html')
+    tran(request)
+
+    return train, test
+
+
+def lstm(request):
+    train, test = definite_lstm(request)
+    # print('------训练集-------')
+    # print(train)
+    print('训练集平均值', train.mean())
+    # print('------测试集-------')
+    # print(test)
+    print('测试集平均值', test.mean())
 
     return render(request, 'lstm.html')
-    # return HttpResponse('success')

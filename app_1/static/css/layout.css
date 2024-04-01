@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .fs {
     width: 400px;
     height: 300px;
@@ -47,7 +51,8 @@
 }
 
 body {
-    margin: 0 auto
+    margin: 0 auto;
+    background:#fbfbfb;
 }
 
 img {
