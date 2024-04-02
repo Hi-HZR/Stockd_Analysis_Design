@@ -5,7 +5,7 @@ from django.http import HttpResponse
 
 
 def tran(request):
-    static_path = os.path.join('app_1', 'static', 'images')
+    static_path = os.path.join('storeserver', 'static', 'images')
     hti = Html2Image(output_path=static_path, size=(1000, 440))
     hti.screenshot(other_file=os.path.join('png_origin.html'), save_as='origin.png')
     hti.screenshot(other_file=os.path.join('png_train.html'), save_as='train.png')

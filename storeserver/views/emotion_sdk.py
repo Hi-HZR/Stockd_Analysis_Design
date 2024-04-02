@@ -4,7 +4,6 @@ import aip
 from django.http import HttpResponse
 from django.shortcuts import render
 
-
 def emotion_sdk(my_text):
     app_id = '57118734'
     api_key = 'MhsCMaKfJX9JyopuyviPbiK5'
@@ -16,6 +15,7 @@ def emotion_sdk(my_text):
     positive_prob = value[0]["positive_prob"]
     negative_prob = value[0]["negative_prob"]
     return positive_prob, negative_prob
+
 
 # # def emotion_txt(request):
 # workbook = load_workbook("D:/PythonProject/djangoProject/xueqiu.xlsx")

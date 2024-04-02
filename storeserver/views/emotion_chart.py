@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from openpyxl.reader.excel import load_workbook
-from app_1.views.emotion_sdk import emotion_sdk
+from storeserver.views.emotion_sdk import emotion_sdk
 
 
 def calculate_average_probs(workbook_path):
@@ -10,12 +10,13 @@ def calculate_average_probs(workbook_path):
     total_negative_prob = 0
     comment_count = 0
     for row in sheet.iter_rows(min_row=2):
-        my_text = row[3].value
+        my_text = 'row[3].value'
         positive_prob, negative_prob = emotion_sdk(my_text)
         if positive_prob is not None and negative_prob is not None:
             total_positive_prob += positive_prob
             total_negative_prob += negative_prob
             comment_count += 1
+
     if comment_count > 0:
 
         average_positive_prob = round(total_positive_prob / comment_count, 2)
@@ -23,7 +24,7 @@ def calculate_average_probs(workbook_path):
 
         return average_positive_prob, average_negative_prob
     else:
-        return None, None
+        print("No valid sentiment scores found for comments.")
 
 
 def emotion_chart(request):

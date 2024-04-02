@@ -1,21 +1,24 @@
 {%extends "layout.html"%}
 {% load static %}
 {%block css%}
-    <title>网页</title>
+    <title>用户</title>
     <link rel="stylesheet" href="{% static 'fonts/OPPOSans-Regular.ttf' %}">
     <link rel="stylesheet" href="{% static 'fonts/OPPOSans-Medium.ttf' %}">
     <link rel="stylesheet" href="{% static 'fonts/OPPOSans-Bold.ttf' %}">
     <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/gradient.css' %}">
 
 {% endblock %}
 
 {%block content%}
     <div style="width: 1240px;height:600px;margin-left:auto ;margin-right:auto">
         {# 展示   #}
-        <div style="width: 620px;height:300px;float: left">
-                <h1 style="text-align: center;padding-top: 100px">
-                    3个不同数据的图表展示
-                </h1>
+        <div class="gradient-container">
+                <div class="gradient-headline_1">
+                    <p>不同数据的<br>
+                    图表展示。
+                    </p>
+                </div>
         </div>
         {#    ORIGIN#}
         <div style="width: 620px;height:300px;float: left">

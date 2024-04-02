@@ -3,11 +3,10 @@ import re
 import time
 import requests
 
-# 不在使用
 
-def crawl_file(request):
+def crawl_comment(request):
     last = None
-    # 模拟浏览器请求头，字典数据类型
+    # 模拟浏览器请求头。
     headers = {
         'cookie': 'cookiesu=551709780632819; device_id=1a1695b4205a2730eb03a1a0c1bbd71a; xq_is_login=1; u=3094906363; '
                   's=br16wjxj42; bid=82de4c8815f512ca2448f432e1f97c93_ltiywjgg; '
@@ -18,12 +17,12 @@ def crawl_file(request):
                       'Safari/537.36'
     }
     content_list_comment = []
-    # 正则表达式
+    # 正则表达式，过滤不需要的内容。
     obj = re.compile(r'<[^>]+>', re.S)
 
-    for page in range(1, 2):
-        if page % 20 == 0:
-            time.sleep(5)
+    for page in range(1, 3):
+        # if page % 20 == 0:
+        #     time.sleep(5)
         print("正在爬取第", page, "页的内容")
         # 请求网站
         if page == 1:
@@ -38,6 +37,7 @@ def crawl_file(request):
         # 发生get请求，<Response [200]>表示请求的结果成功
         response = requests.get(url, headers=headers)
         data = response.json()
+
         # 字典数据使用键值对取值,for循环取值
         try:
             for item in data['list'][1:]:
@@ -54,7 +54,6 @@ def crawl_file(request):
             # 如果出现UnicodeEncodeError，则不添加到content_list
             print(f"Error encoding string: {e}")
 
-    # 获取的用户数据
+    # 获取的用户数据，返回用户数据content_list_comment
     print('成功获取用户评论')
-    # return redirect('http://127.0.0.1:8000/info')
     return content_list_comment

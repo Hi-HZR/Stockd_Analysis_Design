@@ -2,8 +2,8 @@ from django import forms
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from app_1.models import UserInfo
-from app_1.utils.pagination import Pagination
+from storeserver.models import UserInfo
+from storeserver.utils.pagination import Pagination
 from django.utils.safestring import mark_safe
 import requests
 import re
@@ -31,29 +31,8 @@ class LoginForm(forms.Form):
     )
 
 
-def login(request):
-    if request.method == "GET":
-        fm = LoginForm()
-        return render(request, "login.html", {"form": fm})
-    else:
-        fm = LoginForm(data=request.POST)
-        if fm.is_valid():
-            print(fm.cleaned_data)
-            return HttpResponse("成功")
-        else:
-            return render(request, "login.html", {"form": fm})
 
 
-def info(request):
-    queryset = UserInfo.objects.all().order_by("id")
-
-    page_object = Pagination(request, queryset)
-    context = {
-        "queryset": page_object.page_queryset,  # 分页的数据
-        "page_string": page_object.html(),  # 页码
-    }
-
-    return render(request, "info.html", context)
 
 
 def delete(request):

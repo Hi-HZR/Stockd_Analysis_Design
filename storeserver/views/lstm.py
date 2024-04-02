@@ -6,23 +6,23 @@ import torch
 from torch import nn
 import mpld3
 
-from app_1.views.trans import tran
+from storeserver.views.trans import tran
 
 
 def definite_lstm(request):
-    w = FontProperties(fname='D:/PythonProject/djangoProject/app_1/static/fonts/OPPOSans-Medium.ttf')
+    w = FontProperties(fname='D:/PythonProject/djangoProject/storeserver/static/fonts/OPPOSans-Medium.ttf')
     w.set_size(16)
     # Returns a DataFrame
-    data = pd.read_excel("D:/PythonProject/djangoProject/price.xlsx")
+    data = pd.read_excel("D:/PythonProject/djangoProject/point.xlsx")
     print('data.shape:', data.shape)
 
     timeseries = data[["price"]].values.astype('float32')
     fig = plt.figure(dpi=100, figsize=(10, 4))
     plt.plot(timeseries, color='black')
     axes = plt.subplot()
-    axes.set_xlabel('时间', fontproperties=w)
-    axes.set_ylabel('数值', fontproperties=w)
-    axes.set_title('原始图', fontproperties=w)
+    axes.set_xlabel('5天时间', fontproperties=w)
+    axes.set_ylabel('股价', fontproperties=w)
+    axes.set_title('沪深300股价图', fontproperties=w)
     mpld3.save_html(fig, 'png_origin.html')
 
     # 训练集和测试集的分割
@@ -98,16 +98,16 @@ def definite_lstm(request):
     fig_1 = plt.figure(dpi=100, figsize=(10, 4))
     plt.plot(train, linewidth=5, color='#0FC513')
     axes_1 = plt.subplot()
-    axes_1.set_xlabel('次数', fontproperties=w)
-    axes_1.set_ylabel('数值', fontproperties=w)
-    axes_1.set_title("训练图", fontproperties=w)
+    axes_1.set_xlabel('预测次数', fontproperties=w)
+    axes_1.set_ylabel('股价', fontproperties=w)
+    axes_1.set_title("股价预测图", fontproperties=w)
     mpld3.save_html(fig_1, 'png_train.html')
 
     fig_2 = plt.figure(dpi=100, figsize=(10, 4))
     plt.plot(test, linewidth=5, color='#FF6964')
     axes_2 = plt.subplot()
-    axes_2.set_xlabel('次数', fontproperties=w)
-    axes_2.set_ylabel('数值', fontproperties=w)
+    axes_2.set_xlabel('预测次数', fontproperties=w)
+    axes_2.set_ylabel('股价', fontproperties=w)
     axes_2.set_title('测试图', fontproperties=w)
     mpld3.save_html(fig_2, 'png_test.html')
     tran(request)

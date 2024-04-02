@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserInfo
+from .models import UserInfo, StorePoint
 
 admin.site.site_header = '管理后台'  # 设置header
 admin.site.site_title = '管理后台'  # 设置title
@@ -10,4 +10,9 @@ class users_Manager(admin.ModelAdmin):
     list_display = ['uid', 'name', 'comment']
 
 
+class point_Manager(admin.ModelAdmin):
+    list_display = ['point', 'time']
+
+
 admin.site.register(UserInfo, users_Manager)
+admin.site.register(StorePoint, point_Manager)

@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "app_1.apps.App1Config",
+    "storeserver.apps.App1Config",
 ]
 
 MIDDLEWARE = [
@@ -54,7 +54,7 @@ ROOT_URLCONF = 'djangoProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'app_1/templates']
+        'DIRS': [BASE_DIR / 'storeserver/templates']
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -130,7 +130,7 @@ SIMPLEUI_DEFAULT_ICON = False
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static/'),
+    os.path.join(BASE_DIR, 'static'),
 )
 
 # Default primary key field type
