@@ -5,6 +5,7 @@ from openpyxl.reader.excel import load_workbook
 from storeserver.models import UserInfo, StorePoint
 from storeserver.views.crawl_comment import crawl_comment
 from storeserver.views.crawl_price import crawl_price
+from datetime import datetime
 
 
 def upload_file(request):
@@ -24,9 +25,23 @@ def upload_file(request):
         text_uid = row[1].value
         text_name = row[2].value
         text_comment = row[3].value
+        # 原始日期字符串
+        date_string = row[4].value
+
+        # 指定年份
+        year = 2024
+
+        # 将日期字符串转换为datetime对象
+        date_obj = datetime.strptime(date_string, "%m-%d %H:%M")
+
+        # 将年份添加到datetime对象
+        date_obj = date_obj.replace(year=year)
+
+        # 将datetime对象转换为YYYY-MM-DD格式的字符串
+        text_time = date_obj.strftime("%Y-%m-%d")
         my_id += 1
         try:
-            UserInfo.objects.create(id=my_id, name=text_name, uid=text_uid, comment=text_comment)
+            UserInfo.objects.create(id=my_id, name=text_name, uid=text_uid, comment=text_comment,time=text_time)
         except UnicodeEncodeError as e:
             # 如果出现UnicodeEncodeError，则不添加到content_list
             print(f"Error encoding string: {e}")

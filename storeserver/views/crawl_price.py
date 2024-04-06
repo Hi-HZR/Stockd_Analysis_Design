@@ -51,5 +51,5 @@ def crawl_price(request):
     d = pandas.DataFrame(content_list_point)
     d.to_excel('point.xlsx')
 
-    print('success')
+    print('成功获取股市价格')
     return content_list_point

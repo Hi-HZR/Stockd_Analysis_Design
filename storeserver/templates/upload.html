@@ -1,14 +1,53 @@
 {% extends "layout.html" %}
+<base href="/">
 {% load static %}
 {% block css %}
     <title>用户</title>
     <link rel="stylesheet" href="{% static 'css/upload.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/OPPOSans-Bold.ttf' %}">
+    <style>
+        .jump-button {
+            display: inline-block;
+
+            background-color: #04d18e; /* 按钮背景颜色 */
+            border: 2px solid #04d18e; /* 添加外边框 */
+            font-weight: bold;
+            font-size: 24px;
+            font-family: OPPOSans sans-serif;
+            border-radius: 5px; /* 圆角 */
+            color: white; /* 文字颜色 */
+            text-align: center; /* 文字居中 */
+            text-decoration: none; /* 去掉文字装饰（下划线） */
+            line-height: 40px; /* 设置文字垂直居中 */
+        }
+
+        .jump-button:hover {
+            background-color: #45a049; /* 鼠标悬停时的背景颜色 */
+            border-color: #45a049; /* 鼠标悬停时的边框颜色 */
+        }
+
+        .upload-gradient_2 {
+            margin-top: 10px;
+            border: 4px solid #04d18e; /* 添加外边框 */
+            border-radius: 10px; /* 圆角 */
+            font-family: 'OPPOSans B', sans-serif; /* 使用手写风格的字体，具体字体名需根据实际情况替换 */
+            font-size: 72px;
+            font-weight: bold;
+            line-height: normal;
+            color: #fff; /* 文字颜色设置为白色，以便在渐变背景上更好地显示 */
+            background-image: -webkit-linear-gradient(0deg, #3abfde, #04d18e); /* 定义从左到右的渐变效果 */
+            -webkit-background-clip: text; /* 背景裁剪为文字形状 */
+            -webkit-text-fill-color: transparent; /* 将文字填充色设置为透明，以便显示背景色 */
+        }
+    </style>
 {% endblock %}
 {% block content %}
     <div class="upload-section">
         <h1 class="upload-gradient_2">
-        成功爬取页面。
+            成功爬取页面，点击跳转。
         </h1>
+        <a class="jump-button" href="http://127.0.0.1:8000/info/">跳转页面</a>
+
     </div>
 
 {% endblock %}

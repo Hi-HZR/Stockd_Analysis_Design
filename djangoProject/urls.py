@@ -14,9 +14,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path
+from django.urls import path, include
+from django.views.generic import TemplateView
+
 from storeserver.views import (views, info, show_chart, crawl_comment, upload, emotion_chart, emotion_sdk, lstm,
-                               crawl_price, trans, summary,test)
+                               crawl_price, trans, summary, test, snownlp, analyze_sentiment)
 from django.contrib import admin
 
 urlpatterns = [
@@ -41,6 +43,10 @@ urlpatterns = [
     path('search/', views.search),
     path('chart/', show_chart.show_chart),
 
+    # nlp分析
+    path('snownlp/', snownlp.snownlp),
+    path('analyze_sentiment/', analyze_sentiment.analyze_sentiment),
+
     # 前端显示情绪分析图表相关路由
     path('emotion/chart/', emotion_chart.emotion_chart),
     path('emotion/sdk/', emotion_sdk.emotion_sdk),
@@ -51,4 +57,9 @@ urlpatterns = [
 
     # 前端分析总结相关路由
     path('summary/', summary.summary),
+
+    # # vue路由
+    # path(r'^admin/', admin.site.urls),
+    # path(r'^$', TemplateView.as_view(template_name="index.html")),
+    # path(r'^api/', include('storeweb.urls', namespace='api')),
 ]

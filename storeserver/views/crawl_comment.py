@@ -1,4 +1,5 @@
 # 爬取雪球用户的评论并且把数据存储到MYSQL的app_1_userinfo数据表
+import os
 import re
 import time
 import requests
@@ -20,9 +21,9 @@ def crawl_comment(request):
     # 正则表达式，过滤不需要的内容。
     obj = re.compile(r'<[^>]+>', re.S)
 
-    for page in range(1, 3):
-        # if page % 20 == 0:
-        #     time.sleep(5)
+    for page in range(1, 11):
+        if page % 20 == 0:
+            time.sleep(5)
         print("正在爬取第", page, "页的内容")
         # 请求网站
         if page == 1:
@@ -47,12 +48,25 @@ def crawl_comment(request):
                     'uid': item['user']['id'],
                     'name': item['user']['screen_name'],
                     'comment': obj.sub('', item['text']),
+
+                    'time': item['timeBefore']
                 }
                 content_list_comment.append(dit)
                 last = item['id']
         except UnicodeEncodeError as e:
             # 如果出现UnicodeEncodeError，则不添加到content_list
             print(f"Error encoding string: {e}")
+
+    # 要写入文件的数据列表
+    file_path = "../static/output.txt"
+
+    # 使用 with 语句创建并打开一个名为 "output.txt" 的文件
+    with open(file_path, "w") as file:
+        # 遍历数据列表并将每个数据项写入文件
+        for row in content_list_comment:
+            data = row['comment']
+            file.write(str(data) + "\n")
+    # 文件现在已经自动关闭
 
     # 获取的用户数据，返回用户数据content_list_comment
     print('成功获取用户评论')
